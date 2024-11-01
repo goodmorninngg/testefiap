@@ -1,0 +1,21 @@
+name: Executar Testes
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Configurar Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - run: npm install
+    - name: Executar Testes de API
+      run: npm run test
+
+    - name: Executar Testes BDD
+      run: npm run cucumber
