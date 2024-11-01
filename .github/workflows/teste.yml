@@ -1,21 +1,31 @@
-name: Executar Testes
+name: Teste Fiap
 
-on: [push, pull_request]
+on: 
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches: 
+      - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Configurar Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
+      - name: Checkout do Código
+        uses: actions/checkout@v2
 
-    - run: npm install
-    - name: Executar Testes de API
-      run: npm run test
+      - name: Configurar Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
 
-    - name: Executar Testes BDD
-      run: npm run cucumber
+      - name: Instalar Dependências
+        run: npm install
+
+      - name: Teste API
+        run: npm run test
+
+      - name: Teste BDD
+        run: npm run cucumber
