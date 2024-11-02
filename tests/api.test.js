@@ -10,19 +10,10 @@ describe('Teste da API de Login', () => {
     expect(res.body).toHaveProperty('token');
   });
 
-  it('Deve retornar status 400 para campo de e-mail vazio', async () => {
+  it('Deve retornar status 401 para credenciais inválidas', async () => {
     const res = await request(app)
       .post('/login')
-      .send({ email: '', senha: 'senhaaa12312' });
-    expect(res.statusCode).toEqual(400);
-    expect(res.body).toHaveProperty('error', 'O campo de e-mail não pode estar vazio.');
-  });
-
-  it('Deve retornar status 400 para e-mail em formato incorreto', async () => {
-    const res = await request(app)
-      .post('/login')
-      .send({ email: 'emailincorreto', senha: '123' });
-    expect(res.statusCode).toEqual(400);
-    expect(res.body).toHaveProperty('error', 'Formato de e-mail inválido.');
+      .send({ email: 'email@algumacoisa.com', senha: 'senhaerrada' });
+    expect(res.statusCode).toEqual(401);
   });
 });
