@@ -24,8 +24,11 @@ jobs:
     - name: Ensure Cucumber has execute permission
       run: chmod +x ./node_modules/.bin/cucumber-js
 
-    - name: Run tests
+    - name: Run Jest tests
       run: npm run test
 
     - name: Run Cucumber tests
       run: npm run cucumber
+
+    - name: Run Contract Tests
+      run: npm run test
