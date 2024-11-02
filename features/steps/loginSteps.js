@@ -1,7 +1,7 @@
 // features/steps/loginSteps.js
 const { Given, When } = require('@cucumber/cucumber');
 const request = require('supertest');
-const app = require('../../app'); // Ajuste o caminho conforme necessário
+const app = require('../../app');
 
 Given('que o usuário está na página de login', function () {
   this.response = null;
