@@ -1,4 +1,3 @@
-// features/steps/loginSteps.js
 const { Given, When } = require('@cucumber/cucumber');
 const request = require('supertest');
 const app = require('../../app');
