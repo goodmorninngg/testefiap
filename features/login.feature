@@ -1,4 +1,3 @@
-# features/login.feature
 Feature: Login
 
   Scenario: Login com credenciais válidas
